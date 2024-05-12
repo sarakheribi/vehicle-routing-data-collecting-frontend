@@ -10,6 +10,8 @@ import {CommonModule} from "@angular/common";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+// kommentar test
 export class AppComponent {
   title = 'dke-pr-vehicle-routing-frontend';
   handleToggleChange(){
