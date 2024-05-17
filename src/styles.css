@@ -1,1 +1,12 @@
+@import "leaflet/dist/leaflet.css";
 /* You can add global styles to this file, and also import other style files */
+
+/*
+.leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-div-icon {
+  background-image: url('/assets/images/marker-icon.png');
+}
+
+.leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-overlay-pane svg, .leaflet-container .leaflet-shadow-pane svg {
+  background-image: url('/assets/images/marker-shadow.png');
+}
+*/
