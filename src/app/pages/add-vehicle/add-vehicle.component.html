@@ -1,14 +1,24 @@
 <h2>Please enter vehicle data</h2>
 <div class="vehicle-form">
+  <label>Vehicle Type</label>
+  <input matInput type="text" [(ngModel)]="vehicleType">
+
   <label>Vehicle Description</label>
   <input matInput type="text" [(ngModel)]="vehicleDescription">
+
   <label>Seating Places</label>
   <input matInput type="number" [(ngModel)]="seatingPlaces">
+
   <section class="wheelchair-section">
     <mat-checkbox class="example-margin" [(ngModel)]="wheelchair">Can transport wheelchair</mat-checkbox>
   </section>
-  <button aria-label="Save" (click)="saveVehicle()">
-    SAVE
-  </button>
+
+  <label>Start Coordinate</label>
+  <input matInput type="text" [(ngModel)]="startCoordinate">
+
+  <label>End Coordinate</label>
+  <input matInput type="text" [(ngModel)]="endCoordinate">
+
+  <button aria-label="Save" (click)="saveVehicle()">SAVE</button>
 </div>
 

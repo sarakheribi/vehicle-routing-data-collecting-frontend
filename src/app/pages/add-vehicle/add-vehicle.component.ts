@@ -18,9 +18,12 @@ import {ApiService} from "../../services/api-service/api.service";
   styleUrl: './add-vehicle.component.css'
 })
 export class AddVehicleComponent implements OnInit {
+  public vehicleType: string = "";
   public vehicleDescription: string = "";
   public wheelchair = false;
   public seatingPlaces: string = "";
+  public startCoordinate: string = "";
+  public endCoordinate: string = "";
   public result: any;
 
   constructor(private apiService: ApiService ) {
@@ -31,9 +34,13 @@ export class AddVehicleComponent implements OnInit {
 
   saveVehicle() {
     var vehicle = {
+      vehicleType: this.vehicleType,
       vehicleDescription: this.vehicleDescription,
       canTransportWheelchairs: this.wheelchair,
-      seatingPlaces: this.seatingPlaces
+      seatingPlaces: this.seatingPlaces,
+      startCoordinate: this.startCoordinate,
+      endCoordinate: this.endCoordinate
+
     }
     this.apiService.addVehicle(vehicle).subscribe();
   }
