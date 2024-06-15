@@ -3,39 +3,15 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
-import {KeycloakBearerInterceptor, KeycloakService} from "keycloak-angular";
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
-
-export function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:9090',
-        realm: 'routingapp',
-        clientId: 'routing-frontend',
-      },
-      initOptions: {
-        onLoad: 'login-required',
-      },
-      enableBearerInterceptor: true,
-      loadUserProfileAtStartUp: true
-    });
-}
+import {httpInterceptor} from "./interceptor/http.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    KeycloakService,
-    {
-      provide: APP_INITIALIZER, useFactory: initializeKeycloak,
-      deps: [KeycloakService],
-      multi: true
-    },
-    {provide: HTTP_INTERCEPTORS, useClass: KeycloakBearerInterceptor, multi: true},
     provideAnimations(),
-    provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes), provideClientHydration(), provideAnimationsAsync()
-
+    provideHttpClient(withInterceptors([httpInterceptor])),
+    provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimationsAsync()
   ]
 };

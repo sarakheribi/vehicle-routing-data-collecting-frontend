@@ -14,10 +14,16 @@
   </section>
 
   <label>Start Coordinate</label>
-  <input matInput type="text" [(ngModel)]="startCoordinate">
+  <label>Longitude</label>
+  <input matInput type="text" [(ngModel)]="startCoordinateLongitude">
+  <label>Latitude</label>
+  <input matInput type="text" [(ngModel)]="startCoordinateLatitude">
 
   <label>End Coordinate</label>
-  <input matInput type="text" [(ngModel)]="endCoordinate">
+  <label>Longitude</label>
+  <input matInput type="text" [(ngModel)]="endCoordinateLongitude">
+  <label>Latitude</label>
+  <input matInput type="text" [(ngModel)]="endCoordinateLatitude">
 
   <button aria-label="Save" (click)="saveVehicle()">SAVE</button>
 </div>

@@ -8,6 +8,7 @@ import{MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {ApiService} from "../../services/api-service/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-vehicle',
@@ -22,26 +23,39 @@ export class AddVehicleComponent implements OnInit {
   public vehicleDescription: string = "";
   public wheelchair = false;
   public seatingPlaces: string = "";
-  public startCoordinate: string = "";
-  public endCoordinate: string = "";
+  public startCoordinateLatitude: string = "";
+  public startCoordinateLongitude: string = "";
+  public endCoordinateLatitude: string = "";
+  public endCoordinateLongitude: string = "";
   public result: any;
 
-  constructor(private apiService: ApiService ) {
+  constructor(private apiService: ApiService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
   }
 
   saveVehicle() {
-    var vehicle = {
+    const vehicle = {
       vehicleType: this.vehicleType,
       vehicleDescription: this.vehicleDescription,
       canTransportWheelchairs: this.wheelchair,
       seatingPlaces: this.seatingPlaces,
-      startCoordinate: this.startCoordinate,
-      endCoordinate: this.endCoordinate
+      startCoordinate: {
+        longitude: this.startCoordinateLongitude,
+        latitude: this.startCoordinateLatitude,
+      },
+      endCoordinate: {
+        longitude: this.endCoordinateLongitude,
+        latitude: this.endCoordinateLatitude,
+      }
+    };
+    this.apiService.addVehicle(vehicle)
+      .subscribe(() => {
+        this.router.navigate(['/vehicles']);
+      }
+    );
 
-    }
-    this.apiService.addVehicle(vehicle).subscribe();
   }
 }

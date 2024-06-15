@@ -1,11 +1,19 @@
-import { Routes } from '@angular/router';
-import {AddVehicleComponent} from "./pages/add-vehicle/add-vehicle.component";
-import {MapComponent} from "./map/map.component";
-import {HomeComponent} from "./pages/home/home.component";
+import {Routes} from '@angular/router';
+import {MapComponent} from "./pages/map/map.component";
 import {VehiclesComponent} from "./pages/vehicles/vehicles.component";
+import {authGuard} from "./guard/auth.guard";
+import {LoginComponent} from "./pages/login/login.component";
+import {AddVehicleComponent} from "./pages/add-vehicle/add-vehicle.component";
+import {LayoutComponent} from "./layout/layout.component";
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'vehicles', component: VehiclesComponent},
-  {path: 'map', component: MapComponent}
+  {path: '', component: LayoutComponent,
+  loadChildren: () => [
+    {path: 'login', component: LoginComponent},
+    {path: 'vehicles', component: VehiclesComponent, canActivate: [authGuard]},
+    {path: 'map', component: MapComponent, canActivate: [authGuard]},
+    {path: 'addVehicle', component: AddVehicleComponent, canActivate: [authGuard]},
+    {path: '**', pathMatch: 'full',redirectTo: 'vehicles'}
+  ]},
+  {path: '',  pathMatch: 'prefix',redirectTo: ''},
 ];
