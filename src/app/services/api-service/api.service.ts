@@ -51,6 +51,18 @@ export class ApiService {
     return this.httpClient.post(this.basePath + "/addVehicle", vehicle);
   }
 
+  //TODO delete and update
+
+
+/*  public deleteVehicle(vehicleId: number) {
+    return this.httpClient.delete(this.basePath + `/vehicles/${vehicleId}`);
+  }
+
+  public updateVehicle(vehicleId: number, updatedVehicle: any) {
+    return this.httpClient.put(this.basePath + `/vehicles/${vehicleId}`, updatedVehicle);
+  }*/
+
+
   public findAllVehicles() {
     return this.httpClient.get(this.basePath + "/vehicles");
   }

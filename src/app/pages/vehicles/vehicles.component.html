@@ -1,0 +1,13 @@
+<h2>Vehicles</h2>
+<button mat-raised-button (click)="navigateToAddVehicle()">Add new Vehicle</button>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 12px;">
+  @for (vehicle of vehicles; track vehicle){
+    <mat-card style="display: flex; flex-direction: column; gap: 12px; padding: 8px; ">
+      <span>{{vehicle.companyName}}</span>
+      <span>{{vehicle.vehicleType}}</span>
+      <span>{{vehicle.vehicleDescription}}</span>
+      <button mat-raised-button class="custom-button" (click)="deleteVehicle(vehicle)">delete</button>
+      <button mat-raised-button class="custom-button" (click)="editVehicle(vehicle)">edit</button>
+    </mat-card>
+  }
+</div>

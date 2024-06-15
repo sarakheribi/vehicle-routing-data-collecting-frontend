@@ -1,0 +1,10 @@
+<header>
+  <div><h2>Vehicle Routing App</h2></div>
+  @if(isUserLoggedIn){
+    <div class="user">
+      <span>User: {{user}}</span>
+      <button mat-raised-button (click)="logout()">Logout</button>
+    </div>
+  }
+</header>
+<router-outlet/>
