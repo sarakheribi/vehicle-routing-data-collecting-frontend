@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(withInterceptors([httpInterceptor])),
-    provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimationsAsync()
+    provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync()
   ]
 };

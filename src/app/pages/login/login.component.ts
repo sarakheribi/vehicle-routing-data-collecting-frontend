@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import {MatCard, MatCardTitle} from "@angular/material/card";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {ApiService} from "../../services/api-service/api.service";
+import { MatCard, MatCardTitle } from '@angular/material/card';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { ApiService } from '../../services/api-service/api.service';
 import { Router } from '@angular/router';
-import {MatInput} from "@angular/material/input";
-import {MatButton} from "@angular/material/button";
-import {of, switchMap, tap} from "rxjs";
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +23,10 @@ import {of, switchMap, tap} from "rxjs";
     MatCardTitle,
     MatFormField,
     MatInput,
-    MatButton
+    MatButton,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   form = new FormGroup({
@@ -29,35 +34,36 @@ export class LoginComponent {
     password: new FormControl(null, Validators.required),
   });
 
-  constructor(private authService: ApiService, private router: Router) {
-  }
+  constructor(
+    private authService: ApiService,
+    private router: Router,
+  ) {}
 
   submitForm() {
     if (this.form.invalid) {
       return;
     }
     this.authService
-      .login(this.form.get('username')?.value+'',
-        this.form.get('password')?.value+'')
-      .subscribe(
-        (r) => {
-          console.log("r:",r)
-          this.router.navigate(['/vehicles']);
-        }
-      );
-/*    this.authService
-      .login(this.form.get('username')?.value+'', this.form.get('password')?.value+'')
-      .pipe(
-        switchMap((token:string) => {
-          localStorage.setItem("auth-token","lala");
-          if(token){
-            localStorage.setItem("auth-token",token);
-            return of(this.router.navigate(['/vehicles']));
-          }else{
-            return of(undefined);
-          }
-        })
+      .login(
+        this.form.get('username')?.value + '',
+        this.form.get('password')?.value + '',
       )
-      .subscribe();*/
+      .subscribe((r) => {
+        this.router.navigate(['/vehicles']);
+      });
+    /*    this.authService
+          .login(this.form.get('username')?.value+'', this.form.get('password')?.value+'')
+          .pipe(
+            switchMap((token:string) => {
+              localStorage.setItem("auth-token","lala");
+              if(token){
+                localStorage.setItem("auth-token",token);
+                return of(this.router.navigate(['/vehicles']));
+              }else{
+                return of(undefined);
+              }
+            })
+          )
+          .subscribe();*/
   }
 }

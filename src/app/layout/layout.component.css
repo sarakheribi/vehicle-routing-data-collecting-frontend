@@ -1,16 +1,16 @@
-header{
-  width: 99%;
+header {
   height: 50px;
-  background-color: #4385a1;
+  background-color: #5b5b5b;
+  color: white;
   display: flex;
   gap: 12px;
-  margin:8px;
+  margin: 8px;
   padding: 12px;
   justify-content: space-between;
   align-items: center;
 }
 
-.user{
+.user {
   display: flex;
   gap: 12px;
   justify-content: space-between;

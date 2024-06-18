@@ -1,2 +1,53 @@
 
+:host {
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: #7a7a7a 2px 2px 2px 2px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #929292;
+  height: 100%;
+  padding: 32px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+}
+
+.buttons {
+  margin-left: auto;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+
+.coordinates {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
 

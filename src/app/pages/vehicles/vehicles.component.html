@@ -1,13 +1,67 @@
-<h2>Vehicles</h2>
-<button mat-raised-button (click)="navigateToAddVehicle()">Add new Vehicle</button>
-<div style="display: flex; flex-direction: column; gap: 12px; padding: 12px;">
-  @for (vehicle of vehicles; track vehicle){
-    <mat-card style="display: flex; flex-direction: column; gap: 12px; padding: 8px; ">
-      <span>{{vehicle.companyName}}</span>
-      <span>{{vehicle.vehicleType}}</span>
-      <span>{{vehicle.vehicleDescription}}</span>
-      <button mat-raised-button class="custom-button" (click)="deleteVehicle(vehicle)">delete</button>
-      <button mat-raised-button class="custom-button" (click)="editVehicle(vehicle)">edit</button>
-    </mat-card>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 32px">
+  <header>
+    <h2>My Vehicles</h2>
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      Add new Vehicle
+    </button>
+  </header>
+  @for (vehicle of vehicles; track vehicle) {
+    <div class="vehicle">
+      <div class="image">
+        <img
+          src="././assets/van-shuttle-solid.svg"
+          width="50"
+          height="50"
+          alt=""
+        />
+      </div>
+      <div class="text">
+        <span
+        ><b>{{ vehicle.companyName }}</b></span
+        >
+        <span>{{ vehicle.vehicleType }}</span>
+        <span>{{ vehicle.vehicleDescription }}</span>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <mat-icon>accessible</mat-icon>
+          <span>{{
+              vehicle.canTransportWheelchairs ? "Supported" : "Not supported"
+            }}</span>
+        </div>
+      </div>
+      <div class="coordinates">
+        <mat-icon>airline_seat_recline_extra</mat-icon>
+        <span
+        ><b>Seats {{ vehicle.seatingPlaces }}</b></span
+        ><br />
+        <mat-icon>pin_drop</mat-icon>
+        <span
+        ><b>Start:</b> {{ vehicle?.startCoordinate?.latitude }},
+          {{ vehicle.startCoordinate.longitude }}</span
+        >
+        <span
+        ><b>End:</b> {{ vehicle?.endCoordinate?.latitude }},
+          {{ vehicle?.endCoordinate?.longitude }}</span
+        >
+      </div>
+      <div class="buttons">
+        <button
+          style="margin-left: auto"
+          mat-raised-button
+          color="warn"
+          class="custom-button"
+          (click)="deleteVehicle(vehicle)"
+        >
+          DELETE
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="custom-button"
+          (click)="editVehicle(vehicle)"
+        >
+          EDIT
+        </button>
+      </div>
+    </div>
   }
 </div>

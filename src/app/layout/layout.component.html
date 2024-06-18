@@ -1,10 +1,15 @@
 <header>
-  <div><h2>Vehicle Routing App</h2></div>
-  @if(isUserLoggedIn){
-    <div class="user">
-      <span>User: {{user}}</span>
+  <div>
+    <img src="././assets/logo1.png" width="50" height="50" alt="" />
+  </div>
+  <h1>Vehicle Routing App</h1>
+  <div class="user">
+    @if (isUserLoggedIn) {
+      <mat-icon>account_circle</mat-icon>
+      <span>User: {{ user }}</span>
       <button mat-raised-button (click)="logout()">Logout</button>
-    </div>
-  }
+    }
+  </div>
 </header>
-<router-outlet/>
+
+<router-outlet />
