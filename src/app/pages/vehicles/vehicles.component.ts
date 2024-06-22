@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { update } from '@angular-devkit/build-angular/src/tools/esbuild/angular/compilation/parallel-worker';
 import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
+import {Vehicle} from "../../models/vehicle";
 
 @Component({
   selector: 'app-vehicles',
@@ -20,7 +21,7 @@ import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
   styleUrl: './vehicles.component.css',
 })
 export class VehiclesComponent {
-  vehicles: any[] = [];
+  vehicles: Vehicle[] = [];
 
   constructor(
     private apiService: ApiService,
@@ -60,7 +61,7 @@ export class VehiclesComponent {
     });
   }
 
-  deleteVehicle(vehicle: any) {
+  deleteVehicle(vehicle: Vehicle) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       data: {
         message: 'Are you sure want to delete?',
@@ -86,7 +87,7 @@ export class VehiclesComponent {
     });
   }
 
-  editVehicle(vehicle: any) {
+  editVehicle(vehicle: Vehicle) {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       data: {
         vehicle: vehicle,
@@ -98,7 +99,7 @@ export class VehiclesComponent {
 
     dialogRef
       .afterClosed()
-      .subscribe((data: { vehicle: any; update: false }) => {
+      .subscribe((data: { vehicle: Vehicle; update: false }) => {
         if (data.update) {
           this.apiService.updateVehicle(data.vehicle).subscribe(() => {
             this.loadVehicles();
@@ -108,5 +109,9 @@ export class VehiclesComponent {
           });
         }
       });
+  }
+
+  openInvoice(vehicle: Vehicle) {
+    this.router.navigate(['/invoice']);
   }
 }

@@ -35,12 +35,10 @@
         ><br />
         <mat-icon>pin_drop</mat-icon>
         <span
-        ><b>Start:</b> {{ vehicle?.startCoordinate?.latitude }},
-          {{ vehicle.startCoordinate.longitude }}</span
+        ><b>Start:</b> {{ vehicle?.startCoordinate?.streetName }} {{vehicle?.startCoordinate?.doorNumber}}, {{vehicle?.startCoordinate?.city}}</span
         >
         <span
-        ><b>End:</b> {{ vehicle?.endCoordinate?.latitude }},
-          {{ vehicle?.endCoordinate?.longitude }}</span
+        ><b>End:</b> {{ vehicle?.endCoordinate?.streetName}} {{vehicle?.endCoordinate?.doorNumber}}, {{vehicle?.endCoordinate?.city}}</span
         >
       </div>
       <div class="buttons">
@@ -60,6 +58,14 @@
           (click)="editVehicle(vehicle)"
         >
           EDIT
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="custom-button"
+          (click)="openInvoice(vehicle)"
+        >
+          INVOICE
         </button>
       </div>
     </div>

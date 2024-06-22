@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import {NgIf, NgOptimizedImage} from '@angular/common';
 import { ApiService } from '../services/api-service/api.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { switchMap, tap } from 'rxjs';
@@ -9,7 +9,7 @@ import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatButton, NgIf, RouterOutlet, MatIcon],
+  imports: [MatButton, NgIf, RouterOutlet, MatIcon, NgOptimizedImage],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })

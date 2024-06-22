@@ -5,6 +5,7 @@ import {authGuard} from "./guard/auth.guard";
 import {LoginComponent} from "./pages/login/login.component";
 import {AddVehicleComponent} from "./pages/add-vehicle/add-vehicle.component";
 import {LayoutComponent} from "./layout/layout.component";
+import {InvoiceComponent} from "./pages/invoice/invoice.component";
 
 export const routes: Routes = [
   {path: '', component: LayoutComponent,
@@ -12,7 +13,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'vehicles', component: VehiclesComponent, canActivate: [authGuard]},
     {path: 'map', component: MapComponent, canActivate: [authGuard]},
-    {path: 'addVehicle', component: AddVehicleComponent, canActivate: [authGuard]},
+    {path: 'invoice', component: InvoiceComponent, canActivate: [authGuard]},
     {path: '**', pathMatch: 'full',redirectTo: 'vehicles'}
   ]},
   {path: '',  pathMatch: 'prefix',redirectTo: ''},

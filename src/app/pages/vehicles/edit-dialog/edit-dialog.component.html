@@ -77,26 +77,52 @@
       <mat-label>Seating Places</mat-label>
       <input matInput type="number" formControlName="seatingPlaces" />
     </mat-form-field>
+    <div style="display: flex;  gap:12px">
+      <div style="display: flex; flex-direction: column; gap:8px">
+        <label>Starting Point</label>
+        <mat-form-field appearance="outline">
+          <mat-label>Street Name</mat-label>
+          <input matInput type="text" formControlName="startStreetName"/>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Start Coordinate Latitude</mat-label>
-      <input matInput type="text" formControlName="startCoordinateLatitude" />
-    </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Door Number</mat-label>
+          <input matInput type="number" formControlName="startDoorNumber"/>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Start Coordinate Longitude</mat-label>
-      <input matInput type="text" formControlName="startCoordinateLongitude" />
-    </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label> Zip Code</mat-label>
+          <input matInput type="number" formControlName="startZipCode"/>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>End Coordinate Latitude</mat-label>
-      <input matInput type="text" formControlName="endCoordinateLatitude" />
-    </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="startCity"/>
+        </mat-form-field>
+      </div>
+      <div style="display: flex; flex-direction: column; gap:8px">
+        <label>End Point</label>
+        <mat-form-field appearance="outline">
+          <mat-label>Street Name</mat-label>
+          <input matInput type="text" formControlName="endStreetName"/>
+        </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>End Coordinate Longitude</mat-label>
-      <input matInput type="text" formControlName="endCoordinateLongitude" />
-    </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Door Number</mat-label>
+          <input matInput type="number" formControlName="endDoorNumber"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Zip Code</mat-label>
+          <input matInput type="number" formControlName="endZipCode"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="endCity"/>
+        </mat-form-field>
+      </div>
+    </div>
 
     <div style="display: flex; margin-left: auto; gap: 12px">
       <button

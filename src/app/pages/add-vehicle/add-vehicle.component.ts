@@ -40,10 +40,16 @@ export class AddVehicleComponent {
     vehicleDescription: new FormControl(null),
     wheelchair: new FormControl(false, Validators.required),
     seatingPlaces: new FormControl(2, Validators.required),
-    startCoordinateLatitude: new FormControl(null, Validators.required),
-    startCoordinateLongitude: new FormControl(null, Validators.required),
-    endCoordinateLatitude: new FormControl(null, Validators.required),
-    endCoordinateLongitude: new FormControl(null, Validators.required),
+
+    startStreetName: new FormControl(null, Validators.required),
+    startDoorNumber: new FormControl(null, Validators.required),
+    startZipCode: new FormControl(null, Validators.required),
+    startCity: new FormControl(null, Validators.required),
+
+    endStreetName: new FormControl(null, Validators.required),
+    endDoorNumber: new FormControl(null, Validators.required),
+    endZipCode: new FormControl(null, Validators.required),
+    endCity: new FormControl(null, Validators.required),
   });
 
   constructor(
@@ -64,12 +70,16 @@ export class AddVehicleComponent {
       canTransportWheelchairs: this.form.get('wheelchair')?.value,
       seatingPlaces: this.form.get('seatingPlaces')?.value,
       startCoordinate: {
-        longitude: this.form.get('startCoordinateLongitude')?.value,
-        latitude: this.form.get('startCoordinateLatitude')?.value,
+        streetName:this.form.get('startStreetName')?.value,
+        doorNumber:this.form.get('startDoorNumber')?.value,
+        zipcode:this.form.get('startZipCode')?.value,
+        city:this.form.get('startCity')?.value,
       },
       endCoordinate: {
-        longitude: this.form.get('endCoordinateLongitude')?.value,
-        latitude: this.form.get('endCoordinateLatitude')?.value,
+        streetName:this.form.get('endStreetName')?.value,
+        doorNumber:this.form.get('endDoorNumber')?.value,
+        zipcode:this.form.get('endZipCode')?.value,
+        city:this.form.get('endCity')?.value,
       },
     };
 
