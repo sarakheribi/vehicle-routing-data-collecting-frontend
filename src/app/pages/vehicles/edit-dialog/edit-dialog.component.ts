@@ -65,12 +65,12 @@ export class EditDialogComponent {
         startStreetName: this.data.vehicle.startCoordinate.streetName,
         startDoorNumber: this.data.vehicle.startCoordinate.doorNumber,
         startZipCode: this.data.vehicle.startCoordinate.zipcode,
-        startCity:this.data.vehicle.startCoordinate.streetName,
+        startCity:this.data.vehicle.startCoordinate.city,
 
-        endStreetName: this.data.vehicle.startCoordinate.streetName,
-        endDoorNumber: this.data.vehicle.startCoordinate.doorNumber,
-        endZipCode: this.data.vehicle.startCoordinate.zipcode,
-        endCity: this.data.vehicle.startCoordinate.streetName,
+        endStreetName: this.data.vehicle.endCoordinate.streetName,
+        endDoorNumber: this.data.vehicle.endCoordinate.doorNumber,
+        endZipCode: this.data.vehicle.endCoordinate.zipcode,
+        endCity: this.data.vehicle.endCoordinate.city,
 
       });
     }
