@@ -1,5 +1,6 @@
-@import "leaflet/dist/leaflet.css";
-/* You can add global styles to this file, and also import other style files */
+@use "../node_modules/@angular/material/index" as mat;
+
+@import "../node_modules/leaflet/dist/leaflet.css";
 
 /*
 .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-div-icon {
@@ -10,6 +11,104 @@
   background-image: url('/assets/images/marker-shadow.png');
 }
 */
+$primary-palette: (
+  50: #ececec,
+  100: #d0d0d0,
+  200: #b1b1b1,
+  300: #929292,
+  400: #7a7a7a,
+  500: #636363,
+  600: #5b5b5b,
+  700: #515151,
+  800: #474747,
+  900: #353535,
+  A100: #f49898,
+  A200: #ef6b6b,
+  A400: #ff2727,
+  A700: #ff0e0e,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+$secondary-palette: (
+  50: #e8eaf6,
+  100: #c5cbe9,
+  200: #9fa8da,
+  300: #7985cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #394aae,
+  700: #3140a5,
+  800: #29379d,
+  900: #1b278d,
+  A100: #c6cbff,
+  A200: #939dff,
+  A400: #606eff,
+  A700: #4757ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$app-primary: mat.define-palette($primary-palette, 500);
+$app-accent: mat.define-palette($secondary-palette, 400);
+$app-warn: mat.define-palette(mat.$red-palette);
+
+$default-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+@include mat.core();
+@include mat.all-component-themes($default-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

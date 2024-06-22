@@ -1,0 +1,116 @@
+<!--
+<h2>Vehicle data</h2>
+<div class="vehicle-form">
+  <label>Vehicle Type</label>
+  <input matInput type="text" [(ngModel)]="vehicleType" />
+
+  <label>Vehicle Description</label>
+  <input matInput type="text" [(ngModel)]="vehicleDescription" />
+
+  <label>Seating Places</label>
+  <input matInput type="number" [(ngModel)]="seatingPlaces" />
+
+  <section class="wheelchair-section">
+    <mat-checkbox class="example-margin" [(ngModel)]="wheelchair"
+      >Can transport wheelchair</mat-checkbox
+    >
+  </section>
+
+  <label>Start Coordinate</label>
+  <label>Longitude</label>
+  <input matInput type="text" [(ngModel)]="startCoordinateLongitude" />
+  <label>Latitude</label>
+  <input matInput type="text" [(ngModel)]="startCoordinateLatitude" />
+
+  <label>End Coordinate</label>
+  <label>Longitude</label>
+  <input matInput type="text" [(ngModel)]="endCoordinateLongitude" />
+  <label>Latitude</label>
+  <input matInput type="text" [(ngModel)]="endCoordinateLatitude" />
+
+  <div style="display: flex; margin-left: auto">
+    <button mat-raised-button aria-label="Save" (click)="onConfirmSave()">
+      SAVE
+    </button>
+    <button mat-raised-button aria-label="Cancel" (click)="cancel()">
+      CANCEL
+    </button>
+  </div>
+</div>
+
+-->
+
+<form [formGroup]="form" autocomplete="off" style="padding: 32px">
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: center;
+    "
+  >
+    <h2>Update Vehicle Data</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Company</mat-label>
+      <input matInput placeholder="companyName" formControlName="companyName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <input matInput placeholder="vehicleType" formControlName="vehicleType" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" formControlName="vehicleDescription" />
+    </mat-form-field>
+
+    <mat-checkbox
+      class="example-margin"
+      formControlName="wheelchair"
+      [checked]="form.get('wheelchair')?.value ?? false"
+    >
+      Can transport wheelchair
+    </mat-checkbox>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Seating Places</mat-label>
+      <input matInput type="number" formControlName="seatingPlaces" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start Coordinate Latitude</mat-label>
+      <input matInput type="text" formControlName="startCoordinateLatitude" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start Coordinate Longitude</mat-label>
+      <input matInput type="text" formControlName="startCoordinateLongitude" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End Coordinate Latitude</mat-label>
+      <input matInput type="text" formControlName="endCoordinateLatitude" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End Coordinate Longitude</mat-label>
+      <input matInput type="text" formControlName="endCoordinateLongitude" />
+    </mat-form-field>
+
+    <div style="display: flex; margin-left: auto; gap: 12px">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        (click)="onConfirmSave()"
+        aria-label="Save"
+      >
+        SAVE
+      </button>
+      <button mat-raised-button aria-label="Cancel" (click)="cancel()">
+        CANCEL
+      </button>
+    </div>
+  </div>
+</form>
