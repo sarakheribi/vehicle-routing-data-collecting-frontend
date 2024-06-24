@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ApiService} from "../../services/api-service/api.service";
 
 @Component({
   selector: 'app-invoice',
@@ -21,6 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 export class InvoiceComponent implements AfterViewInit {
   private map: L.Map | undefined;
   private baseMapUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  public invoice :any;
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -33,7 +35,14 @@ export class InvoiceComponent implements AfterViewInit {
     //     }
   }
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,
+              private apiService: ApiService) {
+    this.apiService.getInvoiceByVehicle(3).subscribe(
+      r => {
+        this.invoice = r;
+        console.log("invoice:",this.invoice)
+      }
+    )
   }
 
   getRoute() {

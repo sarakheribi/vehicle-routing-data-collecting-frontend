@@ -83,4 +83,8 @@ export class ApiService {
       updatedVehicle,
     );
   }
+
+  public getInvoiceByVehicle(vehicleId: number) {
+    return this.httpClient.get(this.basePath + `/invoicesByVehicle/${vehicleId}`);
+  }
 }
