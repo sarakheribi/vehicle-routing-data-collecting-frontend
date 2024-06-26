@@ -112,6 +112,6 @@ export class VehiclesComponent {
   }
 
   openInvoice(vehicle: Vehicle) {
-    this.router.navigate(['/invoice']);
+    this.router.navigate(['/invoice',vehicle.id]);
   }
 }

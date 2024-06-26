@@ -7,20 +7,12 @@
 </header>
 <div class="content">
   <div class="invoice-content">
-    <div class="invoice-data">
-    <label>Invoice ID</label>
-    <mat-form-field appearance="outline">
-      <mat-label>Invoice ID</mat-label>
-      <input matInput type="number" formControlName="seatingPlaces" [value]="1253"/>
-    </mat-form-field>
-    </div>
 
-    <span>Invoice id</span>
-    <span>Vehicle</span>
-    <span>Date</span>
-    <span>Route in KM</span>
-    <span>Address</span>
-    <span>Costs</span>
+
+    <span>Invoice ID {{  invoice?.id }}</span>
+    <span>{{  invoice?.invoiceDate}}</span>
+    <span>{{  invoice?.route }} km</span>
+    <span>{{  invoice?.costs }}</span>
   </div>
   <div class="map">
     <div id="map" style="width: 100%;height: 100vh"></div>

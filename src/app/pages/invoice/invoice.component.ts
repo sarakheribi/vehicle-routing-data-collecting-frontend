@@ -5,11 +5,12 @@ import 'leaflet/dist/leaflet.css'
 import {HttpClient, HttpClientModule, provideHttpClient} from "@angular/common/http";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ApiService} from "../../services/api-service/api.service";
+import {Invoice} from "../../models/invoice";
 
 @Component({
   selector: 'app-invoice',
@@ -22,8 +23,16 @@ import {ApiService} from "../../services/api-service/api.service";
 export class InvoiceComponent implements AfterViewInit {
   private map: L.Map | undefined;
   private baseMapUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-  public invoice :any;
+  public invoice? :Invoice;
+  private vehicleId?: number;
 
+  constructor(private http: HttpClient, private router: Router,
+              private apiService: ApiService,private route: ActivatedRoute) {
+
+    this.vehicleId = parseInt(this.route.snapshot.paramMap.get('vehicle-id') ?? '');
+    this.loadInvoice();
+
+  }
   private initMap(): void {
     this.map = L.map('map', {
       center: [39.8282, -98.5795],
@@ -33,16 +42,6 @@ export class InvoiceComponent implements AfterViewInit {
     //, {
     //       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     //     }
-  }
-
-  constructor(private http: HttpClient, private router: Router,
-              private apiService: ApiService) {
-    this.apiService.getInvoiceByVehicle(3).subscribe(
-      r => {
-        this.invoice = r;
-        console.log("invoice:",this.invoice)
-      }
-    )
   }
 
   getRoute() {
@@ -60,5 +59,16 @@ export class InvoiceComponent implements AfterViewInit {
 
   goToVehicles() {
     this.router.navigate(['/vehicles']);
+  }
+
+  loadInvoice(){
+    if(this.vehicleId){
+      this.apiService.getInvoiceByVehicle(this.vehicleId).subscribe(
+        (invoice:any) => {
+          this.invoice = invoice as Invoice;
+          console.log("invoice:",this.invoice)
+        }
+      )
+    }
   }
 }

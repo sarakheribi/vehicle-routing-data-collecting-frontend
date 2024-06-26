@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'vehicles', component: VehiclesComponent, canActivate: [authGuard]},
     {path: 'map', component: MapComponent, canActivate: [authGuard]},
-    {path: 'invoice', component: InvoiceComponent, canActivate: [authGuard]},
+    {path: 'invoice/:vehicle-id', component: InvoiceComponent, canActivate: [authGuard]},
     {path: '**', pathMatch: 'full',redirectTo: 'vehicles'}
   ]},
   {path: '',  pathMatch: 'prefix',redirectTo: ''},
